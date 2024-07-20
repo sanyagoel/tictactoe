@@ -1,7 +1,6 @@
 import {useState} from 'react';
 
-export default function Player({player,symbol,isActive}){
-    const [playerName, setPlayerName] = useState(player);
+export default function Player({player,symbol,isActive ,onChange}){
     const [isEditing,setIsEditing] = useState(false);
     const change = function(){
         setIsEditing((editing)=>!editing);
@@ -9,12 +8,12 @@ export default function Player({player,symbol,isActive}){
 
     function editPlayer(event){
         console.log(event);
-        setPlayerName(event.target.value);
+        onChange(event.target.value);
     }
-       let target = (<><span  className='playerName'>{playerName}</span></>);
+       let target = (<><span  className='playerName'>{player}</span></>);
     // const confirm = function(){ setIsEditing(false) }
     if(isEditing){
-        target =   (<><span><input type="text" value={playerName} onChange={editPlayer}></input></span>
+        target =   (<><span><input type="text" value={player} onChange={editPlayer}></input></span>
                     </> )
     }
 
